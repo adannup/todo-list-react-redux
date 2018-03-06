@@ -21,7 +21,7 @@ class AddTodo extends Component {
   onFormSubmit(e) {
     e.preventDefault();
     this.refs.name.value = '';
-    this.props.onFormSubmit(this.state.value);
+    this.props.addTodo(this.state.value);
   }
 
   render() {
