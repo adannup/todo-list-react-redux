@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddTodo extends Component {
   constructor(props) {
@@ -20,18 +21,22 @@ class AddTodo extends Component {
 
   onFormSubmit(e) {
     e.preventDefault();
-    this.refs.name.value = '';
+    this.todoText.value = '';
     this.props.addTodo(this.state.value);
   }
 
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
-        <input type="text" onChange={this.onChangeInput} ref="name"/>
+        <input type="text" onChange={this.onChangeInput} ref={e => { this.todoText = e; }} />
         <input type="submit" value="Add" />
       </form>
     );
   }
 }
+
+AddTodo.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+};
 
 export default AddTodo;

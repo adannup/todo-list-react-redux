@@ -4,13 +4,17 @@ const toggleTodo = id => ({
 });
 
 let nextTodoId = 0;
-const addTodo = text => {
-  return {
-      type: 'ADD_TODO',
-      id: nextTodoId++,
-      text,
-    };
+
+const getID = () => {
+  nextTodoId += 1;
+  return nextTodoId;
 };
+
+const addTodo = text => ({
+  type: 'ADD_TODO',
+  id: getID(),
+  text,
+});
 
 const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
